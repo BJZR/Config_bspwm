@@ -1,6 +1,7 @@
 #Para usarlo:
-#clona el archivo:
 
+##clona el archivo:
+```git clone https://github.com/BJZR/Config_bspwn.git```
 
 ## extraer y Copiar código
 ```unzip bspwm-config.zip -d ~/```
