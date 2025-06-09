@@ -1,9 +1,8 @@
-#
-## Para usarlo:
-## Descomprime el archivo:
+#Para usarlo:
+#clona el archivo:
 
 
-## Copiar código
+## extraer y Copiar código
 ```unzip bspwm-config.zip -d ~/```
 Asegúrate de dar permisos de ejecución a los scripts:
 
