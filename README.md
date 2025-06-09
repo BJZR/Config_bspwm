@@ -1,81 +1,119 @@
 
-‎````markdown
-‎# BSPWM Configuración Estética y Funcional
+‎# Configuración personalizada para bspwm
 ‎
-‎Este repositorio contiene una configuración base y funcional para usar `bspwm` como gestor de ventanas, junto con herramientas esenciales como `sxhkd`, `lemonbar`, `rofi`, `picom`, `dunst`, `xclip`, y utilidades para brillo, volumen y portapapeles.
+‎Este repositorio contiene una configuración organizada y lista para usar de **bspwm** junto con herramientas complementarias como **sxhkd**, **lemonbar**, **rofi**, **dunst**, **picom**, y utilidades personalizadas para brillo y portapapeles. Todo está centralizado dentro de la carpeta `~/.config/bspwm/` para facilitar la personalización y mantenimiento.
 ‎
 ‎---
 ‎
-‎## 🧰 Aplicaciones necesarias
+‎## Estructura de carpetas y archivos
 ‎
-‎Asegúrate de tener instaladas las siguientes aplicaciones:
+‎```
 ‎
-‎```sh
-‎xbps-install -S bspwm sxhkd feh rofi dunst picom xclip xbacklight alsa-utils kitty i3lock
+‎.config/
+‎└── bspwm/
+‎├── bspwmrc              # Configuración principal de bspwm
+‎├── sxhkdrc              # Configuración de atajos de teclado (sxhkd)
+‎├── autostart.sh         # Script para iniciar aplicaciones al arrancar bspwm
+‎├── lemonbar.sh          # Barra de estado personalizada con lemonbar
+‎├── lock.sh              # Script para bloqueo de pantalla (usando i3lock)
+‎├── config/
+‎│   ├── picom.conf       # Configuración de picom (compositor)
+‎│   ├── dunstrc          # Configuración para notificaciones dunst
+‎│   ├── wallpaper.jpg    # Imagen para fondo de pantalla
+‎│   └── rofi-theme.rasi  # Tema personalizado para rofi
+‎└── utils/
+‎├── brightness.sh    # Script para controlar brillo de pantalla
+‎├── volume.sh        # Script para controlar volumen
+‎└── clipboard.sh     # Script simple para portapapeles (xclip)
+‎
 ‎````
 ‎
 ‎---
 ‎
-‎## 🗂️ Estructura del directorio
+‎## Requisitos
 ‎
-‎```
-‎.config/
-‎└── bspwm/
-‎    ├── bspwmrc              # Config principal de bspwm
-‎    ├── sxhkdrc              # Atajos de teclado
-‎    ├── autostart.sh         # Lanzadores automáticos (feh, picom, etc.)
-‎    ├── lemonbar.sh          # Barra de estado básica
-‎    ├── lock.sh              # Bloqueo de pantalla
-‎    ├── config/
-‎    │   ├── picom.conf       # Config de transparencia y efectos
-‎    │   ├── dunstrc          # Config del sistema de notificaciones
-‎    │   ├── wallpaper.jpg    # Fondo de pantalla
-‎    │   └── rofi-theme.rasi  # Tema personalizado para Rofi
-‎    └── utils/
-‎        ├── brightness.sh    # Control de brillo
-‎        ├── volume.sh        # Control de volumen
-‎        └── clipboard.sh     # Mostrar portapapeles
-‎```
+‎Antes de usar esta configuración, asegúrate de tener instaladas las siguientes aplicaciones y herramientas:
 ‎
-‎---
+‎- `bspwm`
+‎- `sxhkd`
+‎- `feh`
+‎- `rofi`
+‎- `dunst`
+‎- `picom`
+‎- `xclip`
+‎- `xbacklight`
+‎- `amixer`
+‎- `kitty`
+‎- `i3lock`
 ‎
-‎## ⚙️ Instalación
+‎Puedes instalar estas aplicaciones mediante tu gestor de paquetes (por ejemplo, `xbps-install` en Void Linux):
 ‎
-‎1. Clona o descarga este repositorio.
-‎2. Copia el contenido a tu `~/.config/`:
-‎
-‎   ```sh
-‎   cp -r .config/bspwm ~/.config/
-‎   ```
-‎3. Da permisos de ejecución a los scripts:
-‎
-‎   ```sh
-‎   chmod +x ~/.config/bspwm/*.sh ~/.config/bspwm/utils/*.sh
-‎   ```
+‎```bash
+‎sudo xbps-install -S bspwm sxhkd feh rofi dunst picom xclip xbacklight alsa-utils kitty i3lock
+‎````
 ‎
 ‎---
 ‎
-‎## ⌨️ Atajos de teclado destacados
+‎## Instalación
 ‎
-‎* `Super + Enter` → Abrir Kitty
-‎* `Super + D` → Abrir Rofi
-‎* `Super + Shift + X` → Bloquear pantalla
-‎* `XF86Audio*` → Control de volumen
-‎* `XF86MonBrightness*` → Control de brillo
+‎1. Clona este repositorio o descarga y descomprime el archivo `.zip`:
 ‎
-‎---
-‎
-‎## 💡 Notas
-‎
-‎* Puedes personalizar los colores y fuentes modificando los archivos de configuración.
-‎* El archivo `autostart.sh` se encarga de iniciar los servicios al entrar al entorno gráfico.
-‎
-‎---
-‎
-‎## 🎨 Créditos
-‎
-‎Configuración personalizada por **Brayan José Zambrano Ruíz**
-‎*"Un chico con más ganas de aprender."*
-‎
+‎```bash
+‎unzip bspwm-config.zip -d ~/
 ‎```
 ‎
+‎2. Da permisos de ejecución a los scripts:
+‎
+‎```bash
+‎chmod +x ~/.config/bspwm/*.sh ~/.config/bspwm/utils/*.sh
+‎```
+‎
+‎3. Inicia `bspwm` (por ejemplo, configurando tu gestor de inicio de sesión para usarlo o arrancándolo desde `.xinitrc`):
+‎
+‎```bash
+‎exec bspwm
+‎```
+‎
+‎---
+‎
+‎## Uso
+‎
+‎* Los atajos de teclado se manejan con `sxhkd`. Para iniciar:
+‎
+‎```bash
+‎sxhkd -c ~/.config/bspwm/sxhkdrc &
+‎```
+‎
+‎* La barra está configurada con `lemonbar`, se inicia automáticamente con `autostart.sh`.
+‎
+‎* El fondo de pantalla se configura con `feh` desde `autostart.sh`.
+‎
+‎* El compositor es `picom`, iniciado también desde `autostart.sh`.
+‎
+‎* Las notificaciones se manejan con `dunst`.
+‎
+‎* Los scripts en `utils/` controlan el brillo, volumen y portapapeles, y están enlazados a atajos en `sxhkdrc`.
+‎
+‎---
+‎
+‎## Personalización
+‎
+‎* Cambia el wallpaper reemplazando `~/.config/bspwm/config/wallpaper.jpg`.
+‎
+‎* Modifica el tema de `rofi` en `~/.config/bspwm/config/rofi-theme.rasi`.
+‎
+‎* Ajusta `picom.conf` para efectos de composición.
+‎
+‎* Agrega o modifica atajos en `sxhkdrc`.
+‎
+‎---
+‎
+‎## Bloqueo de pantalla
+‎
+‎El script `lock.sh` usa `i3lock` para bloquear la pantalla:
+‎
+‎```bash
+‎./lock.sh
+‎```
+‎
+‎Puedes personalizar el color o cambiar el método de bloqueo si lo deseas.
